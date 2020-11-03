@@ -6,10 +6,10 @@ function ToolsBar() {
   return (
     <>
       <div>
-        <Button type="primary" onClick={() => event.emit('showDialog', 'bar')}>添加柱状图</Button>
+        <Button type="primary" onClick={() => event.emit('showDialog', 'echarts')}>图形</Button>
       </div>
       <div>
-        <Button type="primary" onClick={() => event.emit('createElement', 'line')}>添加线性图</Button>
+        <Button type="primary" onClick={() => event.emit('showDialog', 'map')}>地图</Button>
       </div>
     </>
   )
