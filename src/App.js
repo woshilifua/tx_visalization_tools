@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Layout } from 'antd'
+import ToolsBar from './components/toolsbar/ToolsBar'
+import Creator from './components/creator/Creator'
+import OptionDialog from './components/optionDialog/OptionDialog'
+
+const { Sider, Content } = Layout
+
+/*
+  通过 tools bar 的选项，选择添加图形的类型
+  在 option modal 中配置图形的选项
+*/
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Sider>
+        <ToolsBar />
+      </Sider>
+      <Content>
+        <OptionDialog />
+        <Creator />
+      </Content>
+    </Layout>
   );
 }
 
