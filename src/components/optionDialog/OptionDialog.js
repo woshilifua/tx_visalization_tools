@@ -1,33 +1,22 @@
+import React from 'react';
+import { Modal } from 'antd';
+import OptionDialogContent from './OptionDialogContent';
 
-import { Modal } from 'antd'
-import { useState, useEffect } from 'react'
-import event from '../../utils/event'
 
-function Option() {
+function Option(props) {
+    const { visible, onCancel, ...others } = props;
 
-  const [visible, setOptionVisible] = useState(false)
-
-  useEffect(() => {
-    event.on('showDialog', type => {
-      setOptionVisible(true)
-    })
-    return (() => {
-      event.off('showDialog')
-    })
-  }, [])
-
-  return <>
-    <Modal
-      title="Basic Modal"
-      visible={visible}
-      onOk={() => setOptionVisible(true)}
-      onCancel={() => setOptionVisible(false)}
-    >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-    </Modal>
-  </>
+    return (
+        <Modal
+            title="Basic Modal"
+            visible={visible}
+            onCancel={onCancel}
+            footer={null}
+            destroyOnClose /* 每次 弹框关闭 销毁 子组件，*/
+        >
+            <OptionDialogContent {...others} onCancel={onCancel}/>
+        </Modal>
+    );
 }
 
-export default Option
+export default Option;

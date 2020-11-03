@@ -1,18 +1,20 @@
-import { Button } from 'antd'
-import event from '../../utils/event'
+import React from 'react';
+import { Button } from 'antd';
 
-function ToolsBar() {
 
-  return (
-    <>
-      <div>
-        <Button type="primary" onClick={() => event.emit('showDialog', 'bar')}>添加柱状图</Button>
-      </div>
-      <div>
-        <Button type="primary" onClick={() => event.emit('createElement', 'line')}>添加线性图</Button>
-      </div>
-    </>
-  )
+function ToolsBar(props) {
+    const { onClick } = props;
+
+    return (
+        <>
+            <div>
+                <Button type="primary" onClick={() => onClick('bar')}>添加柱状图</Button>
+            </div>
+            <div>
+                <Button type="primary" onClick={() => onClick('line')}>添加线性图</Button>
+            </div>
+        </>
+    );
 }
 
-export default ToolsBar
+export default ToolsBar;
