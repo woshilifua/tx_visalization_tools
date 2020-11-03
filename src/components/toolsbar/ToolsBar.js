@@ -1,15 +1,14 @@
 import { Button } from 'antd'
-import event from '../../utils/event'
 
-function ToolsBar() {
+function ToolsBar({ handleClick }) {
 
   return (
     <>
       <div>
-        <Button type="primary" onClick={() => event.emit('showDialog', 'echarts')}>图形</Button>
+        <Button type="primary" onClick={() => handleClick('echarts')}>图形</Button>
       </div>
       <div>
-        <Button type="primary" onClick={() => event.emit('showDialog', 'map')}>地图</Button>
+        <Button type="primary" onClick={() => handleClick('map')}>地图</Button>
       </div>
     </>
   )

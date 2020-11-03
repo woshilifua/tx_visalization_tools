@@ -3,24 +3,42 @@ import { Layout } from 'antd'
 import ToolsBar from './components/toolsbar/ToolsBar'
 import Creator from './components/creator/Creator'
 import OptionDialog from './components/optionDialog/OptionDialog'
+import { useState } from 'react'
 
 const { Sider, Content } = Layout
 
-/*
-  通过 tools bar 的选项，选择添加图形的类型
-  在 option modal 中配置图形的选项
-*/
-
 function App() {
+
+  const [optionVisible, setOptionVisible] = useState(false)
+
+  const [currentType, setCurrentType] = useState('')
+
+  const [dataSource, setDataSource] = useState([]);
+
+  const handleBarClick = function (type) {
+    setOptionVisible(true)
+    setCurrentType(type)
+  }
+
+  const setData = function (option) {
+    dataSource.push({ option: option, id: Date.now() })
+    setDataSource([...dataSource])
+    setOptionVisible(false)
+  }
 
   return (
     <Layout>
       <Sider>
-        <ToolsBar />
+        <ToolsBar handleClick={handleBarClick} />
       </Sider>
       <Content>
-        <OptionDialog />
-        <Creator />
+        <OptionDialog
+          visible={optionVisible}
+          type={currentType}
+          onCancel={() => setOptionVisible(false)}
+          onSubmit={setData}
+        />
+        <Creator dataSource={dataSource} />
       </Content>
     </Layout>
   );
