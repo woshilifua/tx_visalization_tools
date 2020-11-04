@@ -13,6 +13,7 @@ function Option({ visible, type, onCancel, onSubmit }) {
       title="属性设置"
       visible={visible}
       footer={null}
+      width={700}
       destroyOnClose
     >
       {

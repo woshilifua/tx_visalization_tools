@@ -5,6 +5,17 @@ const { Option } = Select
 function CommomItems() {
   return (
     <>
+      <Form.Item name="span" label="网格数量" initialValue="6" rules={[{ required: true }]}>
+        <Select
+          placeholder="网格数量"
+        >
+          <Option value="4">4网格</Option>
+          <Option value="6">6网格</Option>
+          <Option value="8">8网格</Option>
+          <Option value="12">12网格</Option>
+        </Select>
+      </Form.Item>
+
       <Form.Item
         label="标题"
         name="title"
@@ -18,17 +29,6 @@ function CommomItems() {
       >
         <Input />
       </Form.Item>
-      <Form.Item name="span" label="网格数量" initialValue="6" rules={[{ required: true }]}>
-        <Select
-          placeholder="网格数量"
-        >
-          <Option value="4">4网格</Option>
-          <Option value="6">6网格</Option>
-          <Option value="8">8网格</Option>
-          <Option value="12">12网格</Option>
-        </Select>
-      </Form.Item>
-
     </>
   )
 }
