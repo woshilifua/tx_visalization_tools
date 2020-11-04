@@ -9,7 +9,7 @@ function Creator({ dataSource }) {
       <Row>
         {dataSource.map(item => {
           return (
-            <Col span={12} key={item.id} >
+            <Col span={item.style.span} key={item.id} >
               {
                 item.type === 'echarts' && <ReactEcharts option={item.option} />
               }

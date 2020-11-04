@@ -33,7 +33,13 @@ function EchartsOption({ submit, cancel }) {
       type: values.subType
     })
     const option = Object.assign({}, optionTmp, { title: title, series: series })
-    submit({ type: 'echarts', option })
+    submit({
+      type: 'echarts',
+      option,
+      style: {
+        span: values.span
+      }
+    })
   }
 
   return (
@@ -42,6 +48,8 @@ function EchartsOption({ submit, cancel }) {
         name="basic"
         onFinish={setOption}
       >
+
+        <CommonItems />
 
         <Form.Item name="subType" label="类型" rules={[{ required: true }]}>
           <Select
@@ -52,8 +60,6 @@ function EchartsOption({ submit, cancel }) {
             <Option value="pie">饼图</Option>
           </Select>
         </Form.Item>
-
-        <CommonItems />
 
         <Form.Item >
           <Button type="primary" htmlType="submit">

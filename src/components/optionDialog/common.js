@@ -1,4 +1,6 @@
-import { Form, Input } from 'antd'
+import { Form, Select, Input } from 'antd'
+
+const { Option } = Select
 
 function CommomItems() {
   return (
@@ -15,6 +17,17 @@ function CommomItems() {
       >
         <Input />
       </Form.Item>
+      <Form.Item name="span" label="数量" rules={[{ required: true }]}>
+        <Select
+          placeholder="网格数量"
+        >
+          <Option value="4">4网格</Option>
+          <Option value="6">6网格</Option>
+          <Option value="8">8网格</Option>
+          <Option value="12">12网格</Option>
+        </Select>
+      </Form.Item>
+
     </>
   )
 }

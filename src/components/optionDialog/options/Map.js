@@ -1,12 +1,18 @@
 
-import { Form, Input, Select, Button } from 'antd'
+import { Form, Select, Button } from 'antd'
 import CommonItems from '../common'
 const { Option } = Select
 
 function EchartsOption({ submit, cancel }) {
 
-  const setOption = values => {
-    submit({ type: 'map', option: values })
+  const setOption = option => {
+    submit({
+      type: 'map',
+      option,
+      style: {
+        span: option.span
+      }
+    })
   }
 
   return (
@@ -15,6 +21,8 @@ function EchartsOption({ submit, cancel }) {
         name="basic"
         onFinish={setOption}
       >
+        <CommonItems />
+
         <Form.Item name="subType" label="类型" rules={[{ required: true }]}>
           <Select
             placeholder="地图类型"
@@ -24,8 +32,6 @@ function EchartsOption({ submit, cancel }) {
             <Option value="layer">色块</Option>
           </Select>
         </Form.Item>
-
-        <CommonItems />
 
         <Form.Item >
           <Button type="primary" htmlType="submit">
