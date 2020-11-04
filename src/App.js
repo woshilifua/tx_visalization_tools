@@ -20,8 +20,8 @@ function App() {
     setCurrentType(type)
   }
 
-  const setData = function (option) {
-    dataSource.push({ option: option, id: Date.now() })
+  const setData = function (data) {
+    dataSource.push({ id: Date.now(), ...data })
     setDataSource([...dataSource])
     setOptionVisible(false)
   }

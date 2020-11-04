@@ -16,3 +16,7 @@ body {
   min-height: 100vh;
   background: #3ba0e9;
 }
+
+.map-container {
+  height: 420px;
+}

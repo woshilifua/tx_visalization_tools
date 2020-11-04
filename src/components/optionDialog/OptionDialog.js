@@ -4,8 +4,7 @@ import EchartsOption from './options/Echarts'
 import MapOption from './options/Map'
 
 /*
-  根据 type 的类型设置不同的 option
-  再将 option 传递给 Creator 组件
+  根据 type 的类型设置不同的 option 表单
 */
 
 function Option({ visible, type, onCancel, onSubmit }) {
@@ -22,7 +21,7 @@ function Option({ visible, type, onCancel, onSubmit }) {
       }
       {
         type === 'map' &&
-        <MapOption />
+        <MapOption cancel={onCancel} submit={onSubmit} />
       }
     </Modal>
   </>

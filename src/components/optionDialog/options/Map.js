@@ -1,47 +1,53 @@
 
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Select, Button } from 'antd'
+const { Option } = Select
 
-function MapOption() {
-  return <>
-    <Form
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-    >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your username!',
-          },
-        ]}
+function EchartsOption({ submit, cancel }) {
+
+  const setOption = values => {
+    submit({ type: 'map', option: values })
+  }
+
+  return (
+    <>
+      <Form
+        name="basic"
+        onFinish={setOption}
       >
-        <Input />
-      </Form.Item>
+        <Form.Item name="subType" label="类型" rules={[{ required: true }]}>
+          <Select
+            placeholder="地图类型"
+          >
+            <Option value="heat">热力</Option>
+            <Option value="mark">散点</Option>
+            <Option value="layer">色块</Option>
+          </Select>
+        </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item
+          label="标题"
+          name="title"
+          rules={[
+            {
+              required: true,
+              message: '请输入标题',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item >
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Form.Item >
+          <Button type="primary" htmlType="submit">
+            确定
         </Button>
-      </Form.Item>
-    </Form>
-  </>
+          <Button onClick={cancel}>
+            取消
+        </Button>
+        </Form.Item>
+      </Form>
+    </>
+  )
 }
 
-export default MapOption
+export default EchartsOption
