@@ -51,7 +51,7 @@ function EchartsOption({ submit, cancel }) {
 
         <CommonItems />
 
-        <Form.Item name="subType" label="类型" rules={[{ required: true }]}>
+        <Form.Item name="subType" label="类型" initialValue="bar" rules={[{ required: true }]}>
           <Select
             placeholder="表格类型"
           >

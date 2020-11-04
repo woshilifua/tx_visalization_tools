@@ -23,7 +23,7 @@ function EchartsOption({ submit, cancel }) {
       >
         <CommonItems />
 
-        <Form.Item name="subType" label="类型" rules={[{ required: true }]}>
+        <Form.Item name="subType" label="类型" initialValue="layer" rules={[{ required: true }]}>
           <Select
             placeholder="地图类型"
           >
