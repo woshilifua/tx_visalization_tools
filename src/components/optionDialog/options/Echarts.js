@@ -1,5 +1,7 @@
 
-import { Form, Input, Select, Button } from 'antd'
+import { Form, Select, Button } from 'antd'
+import CommonItems from '../common'
+
 const { Option } = Select
 
 const optionTmp = {
@@ -51,18 +53,7 @@ function EchartsOption({ submit, cancel }) {
           </Select>
         </Form.Item>
 
-        <Form.Item
-          label="标题"
-          name="title"
-          rules={[
-            {
-              required: true,
-              message: '请输入标题',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+        <CommonItems />
 
         <Form.Item >
           <Button type="primary" htmlType="submit">
