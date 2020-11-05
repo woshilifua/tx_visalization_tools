@@ -68,6 +68,12 @@ function EchartsOption({ submit, cancel }) {
       <Form
         name="basic"
         onFinish={setOption}
+        labelCol={{
+          span: 4
+        }}
+        wrapperCol={{
+          span: 20
+        }}
       >
 
         <CommonItems />
@@ -136,10 +142,10 @@ function EchartsOption({ submit, cancel }) {
         <Form.Item >
           <Button type="primary" htmlType="submit">
             确定
-        </Button>
+          </Button>
           <Button onClick={cancel}>
             取消
-        </Button>
+          </Button>
         </Form.Item>
       </Form>
     </>
