@@ -1,5 +1,5 @@
 
-import { Form, Select, Button } from 'antd'
+import { Form, Select, Button, Space } from 'antd'
 import CommonItems from '../common'
 const { Option } = Select
 
@@ -34,12 +34,14 @@ function EchartsOption({ submit, cancel }) {
         </Form.Item>
 
         <Form.Item >
-          <Button type="primary" htmlType="submit">
-            确定
-        </Button>
-          <Button onClick={cancel}>
-            取消
-        </Button>
+          <Space>
+            <Button type="primary" htmlType="submit">
+              确定
+            </Button>
+            <Button onClick={cancel}>
+              取消
+            </Button>
+          </Space>
         </Form.Item>
       </Form>
     </>

@@ -1,6 +1,6 @@
 import ReactEcharts from "echarts-for-react"
 import Map from './components/Map'
-import { Row, Col } from 'antd'
+import { Row, Col, Card } from 'antd'
 
 function Creator({ dataSource }) {
 
@@ -11,10 +11,15 @@ function Creator({ dataSource }) {
           return (
             <Col span={item.style.span} key={item.id} >
               {
-                item.type === 'echarts' && <ReactEcharts option={item.option} />
+                item.type === 'echarts' && <Card size="small" bodyStyle={{ padding: '12px' }}>
+                  <ReactEcharts option={item.option} />
+                </Card>
               }
               {
-                item.type === 'map' && <Map option={item.option} id={item.id} />
+                item.type === 'map' &&
+                <Card size="small" bodyStyle={{ padding: '0' }}>
+                  <Map option={item.option} id={item.id} />
+                </Card>
               }
             </Col>
           )

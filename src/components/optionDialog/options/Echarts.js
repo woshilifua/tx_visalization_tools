@@ -10,8 +10,13 @@ const optionTmp = {
   title: {
     text: '雨量流量关系图',
     subtext: '数据来自西安兰特水电测控技术有限公司',
-    left: 'center',
-    align: 'right'
+    left: 20,
+    align: 'left'
+  },
+  legend: {
+    top: 0,
+    align: 'auto',
+    data: ['每月收入']
   },
   xAxis: {
     type: "category",
@@ -21,6 +26,12 @@ const optionTmp = {
     type: "value"
   },
   series: {
+    name: '每月收入',
+    label: {
+      show: true,
+      color: '#000',
+      position: 'top'
+    },
     data: [820, 932, 901, 934, 1290, 1330, 1320],
   }
 }
