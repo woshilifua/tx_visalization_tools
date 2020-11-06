@@ -1,5 +1,5 @@
 
-import { Form, Select, Input, Button } from 'antd'
+import { Form, Select, Input, Button, Space } from 'antd'
 import CommonItems from '../common'
 import { useState } from 'react'
 import { month } from '../../../define/index'
@@ -139,13 +139,15 @@ function EchartsOption({ submit, cancel }) {
           <Input />
         </Form.Item>
 
-        <Form.Item >
-          <Button type="primary" htmlType="submit">
-            确定
-          </Button>
-          <Button onClick={cancel}>
-            取消
-          </Button>
+        <Form.Item align="center" >
+          <Space>
+            <Button type="primary" htmlType="submit">
+              确定
+            </Button>
+            <Button onClick={cancel}>
+              取消
+            </Button>
+          </Space>
         </Form.Item>
       </Form>
     </>
