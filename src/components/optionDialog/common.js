@@ -5,7 +5,7 @@ const { Option } = Select
 function CommomItems() {
   return (
     <>
-      <Form.Item name="span" label="网格数量" initialValue="6" rules={[{ required: true }]}>
+      <Form.Item name="span" label="网格数量" initialValue="12" rules={[{ required: true }]}>
         <Select
           placeholder="网格数量"
         >
