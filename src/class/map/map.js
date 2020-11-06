@@ -1,10 +1,9 @@
 /* eslint-disable no-undef */
 
-import { setLevel, colorLevels } from '../../utils/common'
 import { nodeStyle, subNodeStyle, nodeLabelStyle } from '../../config/map/index'
 import _ from 'lodash'
 
-let test = [
+let dataList = [
   { name: '东营市', value: 160281 },
   { name: '临沂市', value: 675843 },
   { name: '威海市', value: 230852 },
@@ -23,14 +22,23 @@ let test = [
   { name: '青岛市', value: 1035102 }
 ]
 
-setLevel(test, 6)
+const MAX = _.maxBy(dataList, 'value').value
+const MIN = _.minBy(dataList, 'value').value
+const LEVELCOUNT = 6
+const COLORS = ['#fdd87d', '#fdb156', '#fb8d47', '#ee3d2c', '#bb082b']
+
+_.each(dataList, item => {
+  const level = Math.floor(((item.value - MIN) / (MAX + MIN)) * LEVELCOUNT)
+  item['color'] = COLORS[level]
+})
 
 export default class Map {
   constructor(id) {
     this.districtExplorer = null
     this.map = new AMap.Map(id, {
       zoom: 11,
-      center: [116.480766, 39.932931]
+      center: [116.480766, 39.932931],
+      features: []
     })
   }
 
@@ -72,9 +80,9 @@ export default class Map {
     )
 
     this.districtExplorer.renderSubFeatures(areaNode, (subAreaNode) => {
-      const result = test.find(item => item.name === subAreaNode.properties.name)
+      const result = dataList.find(item => item.name === subAreaNode.properties.name)
       if (result) {
-        return Object.assign({}, subNodeStyle, { fillColor: colorLevels[result.level] })
+        return Object.assign({}, subNodeStyle, { fillColor: result.color })
       }
       return subNodeStyle
     })
