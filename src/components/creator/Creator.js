@@ -10,8 +10,8 @@ function Creator({ dataSource }) {
       <Row>
         {dataSource.map(item => {
           return (
-            <Draggable>
-              <Col span={item.style.span} key={item.id} >
+            <Draggable key={item.id}>
+              <Col span={item.style.span} >
                 {
                   item.type === 'echarts' && <Card size="small" bodyStyle={{ padding: '12px' }}>
                     <ReactEcharts option={item.option} />

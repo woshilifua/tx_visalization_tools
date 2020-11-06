@@ -29,7 +29,7 @@ function App() {
   return (
     <Layout>
       <Sider align="center">
-        <ToolsBar style={{ top: 20 }} handleClick={handleBarClick} />
+        <ToolsBar handleClick={handleBarClick} />
       </Sider>
       <Content>
         <OptionDialog
