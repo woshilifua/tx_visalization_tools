@@ -1,5 +1,5 @@
 import './App.css';
-import { Layout } from 'antd'
+import { Layout, Button } from 'antd'
 import ToolsBar from './components/toolsbar/ToolsBar'
 import Creator from './components/creator/Creator'
 import OptionDialog from './components/optionDialog/OptionDialog'
@@ -31,8 +31,13 @@ function App() {
 
   return (
     <Layout>
-      <Sider align="center">
-        <ToolsBar handleClick={handleBarClick} />
+      <Sider align="center" style={{ paddingTop: '30px' }} >
+        <ToolsBar addComponent={addComponent} setTmp={setTmp} />
+        <Button type="danger" onClick={() => setDataSource([])} style={{
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px'
+        }}>重置</Button>
       </Sider>
       <Content>
         <OptionDialog
