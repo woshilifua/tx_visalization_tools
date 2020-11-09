@@ -44,26 +44,26 @@ const mergeOption = function (obj) {
   }
 
   // 设置 title
-  Object.assign(title, {
+  _.assign(title, {
     text: obj.title,
     subtext: obj.subTitle
   })
 
   // 设置 legend
-  Object.assign(legend, {
-    data: [obj.seriesName]
+  _.assign(legend, {
+    data: [obj.yAxis.type]
   })
 
   // 设置 xAxis
-  Object.assign(xAxis, {
-    data: obj.xAxis
+  _.assign(xAxis, {
+    data: obj.xAxis.value
   })
 
   // 设置 series
-  Object.assign(series, {
+  _.assign(series, {
     type: obj.subType,
-    name: obj.seriesName,
-    data: obj.seriesValue
+    name: obj.yAxis.type,
+    data: obj.yAxis.value
   })
 
   return { title, legend, xAxis, yAxis, series }

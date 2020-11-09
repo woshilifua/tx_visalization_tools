@@ -9,10 +9,13 @@ const { Sider, Content } = Layout
 
 function App() {
 
+  // option Dialog Controller
   const [optionVisible, setOptionVisible] = useState(false)
 
+  // option Type Controller
   const [currentType, setCurrentType] = useState('')
 
+  // data source for creator loop
   const [dataSource, setDataSource] = useState([]);
 
   const handleBarClick = function (type) {

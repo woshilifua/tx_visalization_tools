@@ -1,19 +1,18 @@
 
 import { Form, Select, Input, Button, Space } from 'antd'
 import CommonItems from './common'
-import { useState } from 'react'
+// import { useState } from 'react'
 import { mergeOption } from '../../../utils/common'
 import { month } from '../../../define/index'
 
 const { Option } = Select
 
+const randomArray = Array(12).fill().map(() => Math.round(Math.random() * 40))
 
 function EchartsOption({ submit, cancel }) {
 
-  const randomArray = Array(12).fill().map(() => Math.round(Math.random() * 40))
-
-  const [xAxis, setxAxis] = useState(month)
-  const [values, setValues] = useState(randomArray)
+  // const [xAxis, setxAxis] = useState()
+  // const [values, setValues] = useState()
 
   const setOption = val => {
 
@@ -67,55 +66,53 @@ function EchartsOption({ submit, cancel }) {
           <Input />
         </Form.Item>
 
-        <Form.Item label="X轴值">
+        <Form.Item label="X轴">
           <Input.Group compact>
             <Form.Item
-              name={['address', 'province']}
+              name={['xAxis', 'type']}
+              initialValue="month"
               noStyle
+              rules={[{ required: true, message: 'Province is required' }]}
             >
-              <Select placeholder="Select province"
-                initialValue="month"
+              <Select
                 style={{ width: '20%' }}>
                 <Option value="month">月份</Option>
                 <Option value="region">省市</Option>
               </Select>
             </Form.Item>
             <Form.Item
-              name="xAxis"
-              initialValue={xAxis}
+              name={['xAxis', 'value']}
               noStyle
+              initialValue={month}
+              rules={[{ required: true, message: 'Street is required' }]}
             >
               <Input style={{ width: '80%' }} />
             </Form.Item>
           </Input.Group>
         </Form.Item>
 
-        <Form.Item
-          label="Y轴值"
-          name="seriesValue"
-          initialValue={values}
-          rules={[
-            {
-              required: true,
-              message: '请输入标题',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Y轴名称"
-          name="seriesName"
-          initialValue="收入"
-          rules={[
-            {
-              required: true,
-              message: '请输入标题',
-            },
-          ]}
-        >
-          <Input />
+        <Form.Item label="Y轴">
+          <Input.Group compact>
+            <Form.Item
+              name={['yAxis', 'type']}
+              initialValue="收入"
+              noStyle
+              rules={[{ required: true, message: 'Province is required' }]}
+            >
+              <Select
+                style={{ width: '20%' }}>
+                <Option value="收入">收入</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              name={['yAxis', 'value']}
+              noStyle
+              initialValue={randomArray}
+              rules={[{ required: true, message: 'Street is required' }]}
+            >
+              <Input style={{ width: '80%' }} />
+            </Form.Item>
+          </Input.Group>
         </Form.Item>
 
         <Form.Item align="center" >
