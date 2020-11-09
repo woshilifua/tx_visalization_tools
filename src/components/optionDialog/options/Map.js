@@ -20,6 +20,12 @@ function EchartsOption({ submit, cancel }) {
       <Form
         name="basic"
         onFinish={setOption}
+        labelCol={{
+          span: 4
+        }}
+        wrapperCol={{
+          span: 20
+        }}
       >
         <CommonItems />
 

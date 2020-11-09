@@ -1,7 +1,6 @@
 
 import { Form, Select, Input, Button, Space } from 'antd'
 import CommonItems from './common'
-// import { useState } from 'react'
 import { mergeOption } from '../../../utils/common'
 import { month } from '../../../define/index'
 
@@ -10,9 +9,6 @@ const { Option } = Select
 const randomArray = Array(12).fill().map(() => Math.round(Math.random() * 40))
 
 function EchartsOption({ submit, cancel }) {
-
-  // const [xAxis, setxAxis] = useState()
-  // const [values, setValues] = useState()
 
   const setOption = val => {
 
