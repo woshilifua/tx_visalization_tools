@@ -18,7 +18,7 @@ function App() {
   // data source for creator loop
   const [dataSource, setDataSource] = useState([]);
 
-  const handleBarClick = function (type) {
+  const addComponent = function (type) {
     setOptionVisible(true)
     setCurrentType(type)
   }
@@ -27,6 +27,10 @@ function App() {
     dataSource.push({ id: Date.now(), ...data })
     setDataSource([...dataSource])
     setOptionVisible(false)
+  }
+
+  const setTmp = function (tmp) {
+    setDataSource(tmp)
   }
 
   return (
