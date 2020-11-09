@@ -14,6 +14,7 @@ function Option({ visible, type, onCancel, onSubmit }) {
       visible={visible}
       footer={null}
       width={700}
+      onCancel={onCancel}
       destroyOnClose
     >
       {
