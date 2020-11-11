@@ -1,6 +1,6 @@
 
 import { Form, Select, Button, Space } from 'antd'
-import CommonItems from './common'
+import CommonItems from './common/index'
 const { Option } = Select
 
 function EchartsOption({ submit, cancel }) {

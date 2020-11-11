@@ -1,27 +1,30 @@
 
-import { Form, Select, Input, Button, Space } from 'antd'
-import CommonItems from './common'
-import { mergeOption } from '../../../utils/common'
-import { month } from '../../../define/index'
+import { Form, Select, Input, Button, Space, Row, Col } from 'antd'
+import CommonItems from './common/index'
+import EchartsItems from './common/echarts'
+import { echartsTmp } from '../../../define/index'
+import { useState } from 'react'
+import _ from 'lodash'
 
 const { Option } = Select
-
-const randomArray = Array(12).fill().map(() => Math.round(Math.random() * 40))
 
 function EchartsOption({ submit, cancel }) {
 
   const setOption = val => {
 
-    const option = mergeOption(val)
+    const { style } = val
+    delete val.style
+
+    const option = _.merge({}, echartsTmp, val)
 
     submit({
       type: 'echarts',
-      option: option,
-      style: {
-        span: val.span
-      }
+      option,
+      style
     })
   }
+
+  const [subType, setSubType] = useState('bar')
 
   return (
     <>
@@ -35,81 +38,45 @@ function EchartsOption({ submit, cancel }) {
           span: 20
         }}
       >
-
+        {/* 通用属性 */}
         <CommonItems />
 
-        <Form.Item name="subType" label="类型" initialValue="bar" rules={[{ required: true }]}>
-          <Select
-            placeholder="表格类型"
-          >
-            <Option value="bar">柱状</Option>
-            <Option value="line">折线</Option>
-            <Option value="pie">饼图</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item
-          label="标题"
-          name="subTitle"
-          initialValue="测试子标题"
-          rules={[
-            {
-              required: true,
-              message: '请输入标题',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item label="X轴">
-          <Input.Group compact>
-            <Form.Item
-              name={['xAxis', 'type']}
-              initialValue="month"
-              noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
-            >
+        <Row>
+          <Col span="12">
+            <Form.Item name={["series", "type"]} label="类型"
+              initialValue={subType} labelCol={{
+                span: 8
+              }}
+              wrapperCol={{
+                span: 16
+              }}>
               <Select
-                style={{ width: '20%' }}>
-                <Option value="month">月份</Option>
-                <Option value="region">省市</Option>
+                placeholder="表格类型" onChange={(val) => setSubType(val)}
+              >
+                <Option value="bar">柱状</Option>
+                <Option value="line">折线</Option>
+                <Option value="pie">饼图</Option>
               </Select>
             </Form.Item>
+          </Col>
+          <Col span="12">
             <Form.Item
-              name={['xAxis', 'value']}
-              noStyle
-              initialValue={month}
-              rules={[{ required: true, message: 'Street is required' }]}
+              label="子标题"
+              name={['title', 'subtext']}
+              initialValue="测试子标题"
+              labelCol={{
+                span: 8
+              }}
+              wrapperCol={{
+                span: 16
+              }}
             >
-              <Input style={{ width: '80%' }} />
+              <Input />
             </Form.Item>
-          </Input.Group>
-        </Form.Item>
+          </Col>
+        </Row>
 
-        <Form.Item label="Y轴">
-          <Input.Group compact>
-            <Form.Item
-              name={['yAxis', 'type']}
-              initialValue="收入"
-              noStyle
-              rules={[{ required: true, message: 'Province is required' }]}
-            >
-              <Select
-                style={{ width: '20%' }}>
-                <Option value="收入">收入</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              name={['yAxis', 'value']}
-              noStyle
-              initialValue={randomArray}
-              rules={[{ required: true, message: 'Street is required' }]}
-            >
-              <Input style={{ width: '80%' }} />
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+        <EchartsItems subType={subType} />
 
         <Form.Item align="center" >
           <Space>
