@@ -5,13 +5,14 @@ const { Option } = Select
 
 function EchartsOption({ submit, cancel }) {
 
-  const setOption = option => {
+  const setOption = val => {
+    const { style } = val
+    delete val.style
+
     submit({
       type: 'map',
-      option,
-      style: {
-        span: option.span
-      }
+      style,
+      option: val
     })
   }
 
